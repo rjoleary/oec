@@ -6,3 +6,12 @@ html, body, div, canvas {
   height: 100%;
   overflow: none;
 }
+
+#zoom-in {
+	background-color: #eeeeee;
+	width: 10%;
+	height: 50%;
+	position: absolute;
+	right: 0;
+	top: 0;
+}

@@ -10,13 +10,23 @@
     <div id="wrapper">
     	<canvas id="myCanvas" class="simulation-canvas">Your browser does not support the canvas element.</canvas>
     </div>
+
+    <div id="zoom-in">
+        <input type="input" id="t-id" label="Train ID: " />
+        <button id="trainidsubmit" tabindex="1"> SUBMIT TRAIN #  </button> 
+        <button id="zoom"> ZOOM IN/OUT </button><br>
+
+        <!-- Detail panel -->
+        <p>Location:<span id="location"><span></p>
+        <p>Speed:<span id="speed"><span></p>
+        <p>State:<span id="state"><span></p>
+    </div>
     
     <!-- Import jquery -->
     <script src="libraries/jquery-1.11.2.min.js"></script>
     
     <!-- Include our scripts. -->
     <script src="js/canvas-resize.js"></script>
-    
     <script src="js/canvas-update.js"></script>
     <script src="js/get-train-parameters.js"></script>
     <script src="js/main-loop.js"></script>
