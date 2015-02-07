@@ -2,12 +2,27 @@
 <html>
   <head>
     <title>Train Control Panel</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
     <!-- This canvas element is fullscreen. -->
-    <canvas class="simulation-canvas" width="0" height="0">Your browser does not support the canvas element.</canvas>
+    <div id="wrapper">
+    	<canvas id="myCanvas" class="simulation-canvas">Your browser does not support the canvas element.</canvas>
+    </div>
     
     <!-- Import jquery -->
     <script src="libraries/jquery-1.11.2.min.js"></script>
+    
+    <!-- Include our scripts. -->
+    
+    <script src="js/get-train-parameters.js"></script>
+    <script src="js/canvas-update.js"></script>
+    <script src="js/canvas-resize.js"></script>
+    <script src="js/main-loop.js"></script>
+    <script src="js/train-safety.js"></script>
+    <script src="js/train-parameters.js"></script>
+    
+    <!-- Load testing data. -->
+    <script src="data/Testing.js"></script>
   </body>
 </html>
