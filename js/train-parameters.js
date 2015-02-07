@@ -9,4 +9,7 @@ function TrainParameters(time, trainId, front, rear, track, speed, status) {
     this.track = track;
     this.speed = speed;
     this.status = status;
+	this.frontRed = 0;
+	this.frontYellow = 0;
+	this.rearBlue = 0;
 }
