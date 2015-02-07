@@ -2,7 +2,7 @@
  * The simulation starts automatically at the start of the loop.
  */
 $(function () {
-    var TIME_INTERVAL = 15; // half a second
+    var TIME_INTERVAL = 500; // half a second
     
     var time = 0;
     setInterval(function () {
@@ -12,9 +12,9 @@ $(function () {
         if (trainParameters && trainParameters.length > 0) {
             updateCanvas(trainParameters);
             applySafety(trainParameters);
+            
+            // Increment the time for the next interval.
+            time++;
         }
-        
-        // Increment the time for the next interval.
-        time++;
     }, TIME_INTERVAL);
 });
