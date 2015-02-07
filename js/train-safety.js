@@ -10,11 +10,11 @@ function applySafety(trainParameters) {
                 var front;
                 var back;
 				if (trainParameters[i].rear > trainParameters[j].front){
-					front = trainParameters[i] ;
-					back = trainParameters[j] ;
+					front = trainParameters[i];
+					back = trainParameters[j];
 				} else {
-					front = trainParameters[j] ;
-					back = trainParameters[i] ;
+					front = trainParameters[j];
+					back = trainParameters[i];
 				}
                 var SIGNAL_BLOCK_SIZE = 75;
 				front.frontRed = frontRed(front.speed);
@@ -25,15 +25,16 @@ function applySafety(trainParameters) {
 				back.rearBlue = rearBlue(back.speed);
                 // We performed numerical analysis and determined the upper bound for floating-point error is 0.05.
 				if (Math.abs((front.rear * SIGNAL_BLOCK_SIZE - front.rearBlue) - (back.front * SIGNAL_BLOCK_SIZE + back.frontYellow)) < 0.05) {
-				    cmd.push('slow ' + back.trainId);
+				    cmd.push(back.trainId + 'Slow Down');
                 }
 				if (Math.abs((front.rear * SIGNAL_BLOCK_SIZE - front.rearBlue) - (back.front * SIGNAL_BLOCK_SIZE + back.frontRed)) < 0.05) {
-					cmd.push('stop ' + back.trainId);
+					cmd.push(back.trainId + 'Stop');
                 }
 			}
 		}
 	}
-    if (cmd.length > 0) {
-        alert(cmd);
+    for (var i = 0; i < cmd.length; i++) {
+        console.log('Commands:' + cmd);
+        $.post(cmd[i]);
     }
 }
