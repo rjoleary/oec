@@ -1,32 +1,39 @@
+/**
+ * Analyze the array of train parameters and create sends commands to the server.
+ */
 function applySafety(trainParameters) {
-	var cmd = "running" ;
-	var arrayLength = trainParameters.length;
-	for (var i = 0; i < arrayLength; i++){
-		for (var j = 0; i < arrayLength; i++){
-			var front ;
-			var back ;
-			if(i!=j){
-				if(trainParameters[i].rear > trainParameters[j].front){
+    console.log("Applying train safety...");
+	var cmd = [];
+	for (var i = 0; i < trainParameters.length; i++) {
+		for (var j = i + 1; j < trainParameters.length; j++) {
+			if (i != j){
+                var front;
+                var back;
+				if (trainParameters[i].rear > trainParameters[j].front){
 					front = trainParameters[i] ;
 					back = trainParameters[j] ;
-				}
-				else if(trainParameters[i].rear < trainParameters[j].front){
+				} else {
 					front = trainParameters[j] ;
 					back = trainParameters[i] ;
 				}
+                var SIGNAL_BLOCK_SIZE = 75;
 				front.frontRed = frontRed(front.speed);
 				front.frontYellow = frontYellow(front.speed);
 				front.rearBlue = rearBlue(front.speed);
 				back.frontRed = frontRed(back.speed);
 				back.frontYellow = frontYellow(back.speed);
 				back.rearBlue = rearBlue(back.speed);
-				if((front.rear - front.rearBlue)-(back.front + back.frontYellow) === 0)
-				    cmd = "slow";
-				if((front.rear - front.rearBlue) - (back.font + back.frontRed) === 0)
-					cmd = "stop";
+                // We performed numerical analysis and determined the upper bound for floating-point error is 0.05.
+				if (Math.abs((front.rear * SIGNAL_BLOCK_SIZE - front.rearBlue) - (back.front * SIGNAL_BLOCK_SIZE + back.frontYellow)) < 0.05) {
+				    cmd.push('slow ' + back.trainId);
+                }
+				if (Math.abs((front.rear * SIGNAL_BLOCK_SIZE - front.rearBlue) - (back.front * SIGNAL_BLOCK_SIZE + back.frontRed)) < 0.05) {
+					cmd.push('stop ' + back.trainId);
+                }
 			}
 		}
 	}
-    console.log("Applying train safety...");
-	return cmd;
+    if (cmd.length > 0) {
+        alert(cmd);
+    }
 }
