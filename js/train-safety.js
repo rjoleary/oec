@@ -35,6 +35,6 @@ function applySafety(trainParameters) {
 	}
     for (var i = 0; i < cmd.length; i++) {
         console.log('Commands:' + cmd);
-        $.post(cmd[i]);
+        $.post(cmd[i].replace(' ', '-'));
     }
 }
