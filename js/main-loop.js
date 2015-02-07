@@ -2,7 +2,7 @@
  * The simulation starts automatically at the start of the loop.
  */
 $(function () {
-    var TIME_INTERVAL = 500; // half a second
+    var TIME_INTERVAL = 15; // half a second
     
     var time = 0;
     setInterval(function () {
