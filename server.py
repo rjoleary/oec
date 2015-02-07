@@ -1,30 +1,11 @@
-import sys
 import http.server
-from http.server import SimpleHTTPRequestHandler
+import socketserver
 
+PORT = 80
 
-HandlerClass = SimpleHTTPRequestHandler
-ServerClass  = http.server.HTTPServer
-Protocol     = "HTTP/1.0"
+Handler = http.server.SimpleHTTPRequestHandler
 
-if sys.argv[1:]:
-    port = int(sys.argv[1])
-else:
-    port = 8000
-server_address = ('127.0.0.1', port)
+httpd = socketserver.TCPServer(("", PORT), Handler)
 
-HandlerClass.protocol_version = Protocol
-httpd = ServerClass(server_address, HandlerClass)
-
-sa = httpd.socket.getsockname()
-print( "Serving HTTP on", sa[0], "port", sa[1], "...")
-
-
-with open(r'C:\Users\samay.chawla\Desktop\oec\data\testing.txt',"rt") as in_file:
-    text = in_file.read()
-
-    print(text)
-    def do_GET(self):
-        self.wfile.write("Hello World !")
-        return wfile
+print("serving at port", PORT)
 httpd.serve_forever()
