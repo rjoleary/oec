@@ -12,14 +12,12 @@
     </div>
 
     <div id="zoom-in">
-        <!-- <form> -->
         <input type="input" id="t-id" label="Train ID: " />
-        <!-- </form> -->
-        <button id="trainidsubmit"> SUBMIT TRAIN #  </button> 
+        <button id="trainidsubmit" tabindex="1"> SUBMIT TRAIN #  </button> 
         <button id="zoom"> ZOOM IN/OUT </button><br>
 
-        <p>Front:<span id="front"><span></p>
-        <p>Rear:<span id="rear"><span></p>
+        <!-- Detail panel -->
+        <p>Location:<span id="location"><span></p>
         <p>Speed:<span id="speed"><span></p>
         <p>State:<span id="state"><span></p>
     </div>
@@ -29,7 +27,6 @@
     
     <!-- Include our scripts. -->
     <script src="js/canvas-resize.js"></script>
-    
     <script src="js/canvas-update.js"></script>
     <script src="js/get-train-parameters.js"></script>
     <script src="js/main-loop.js"></script>
