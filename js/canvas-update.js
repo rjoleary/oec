@@ -1,10 +1,8 @@
 var ctx = $("#myCanvas");
 var c = ctx[0].getContext("2d");
 var wrapper = $("#wrapper");
-var height = $(window).height()*0.95;
-var width = height*1.25;
 
-function parseLocToCoor(front, rear, track) {
+function parseLocToCoor(front, rear, track, height, width) {
 	var x, y, w, h;
 	if (track == "1E") {
 		x = width*(0.05 + (rear-1101)*0.54/200);
@@ -46,15 +44,12 @@ function parseLocToCoor(front, rear, track) {
  */
  function updateCanvas(trainParameters) {
  	var size = trainParameters.length;
- 	if (!size) {
- 		return;
- 	}
     console.log("Updating the canvas with " + JSON.stringify(trainParameters));
 
-	ratio = width*0.9*25000;
-
-	ctx.attr("height", height);
-	ctx.attr("width", width);
+    var height = ctx[0].height;
+    var width = ctx[0].width;
+    console.log("Canvas height " + height + " width " + width);
+    c.clearRect(0, 0, width, height);
 
 	// 1
 	c.strokeRect(width*0.05, height*0.15, width*0.54, height*0.05);
@@ -74,7 +69,7 @@ function parseLocToCoor(front, rear, track) {
 
 	for(i=0; i<size; ++i) {
 		// console.log(trainParameters[i]["trainId"]);
-		var arr = parseLocToCoor(parseInt(trainParameters[i]["front"]), parseInt(trainParameters[i]["rear"]), trainParameters[i]["track"]);
+		var arr = parseLocToCoor(parseInt(trainParameters[i]["front"]), parseInt(trainParameters[i]["rear"]), trainParameters[i]["track"], height, width);
 		c.fillStyle = 'green';
 		// c.fillRect(width*0.10, height*0.15, height*0.01, height*0.05);
 		console.log(arr);
