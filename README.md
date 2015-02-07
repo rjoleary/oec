@@ -1,6 +1,6 @@
 # OEC 2015 - Waterloo Team
 
-Double click on start.bat file to start the server and client.
+Double click on index.html.
 
 Code sources:
 
