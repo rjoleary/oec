@@ -1,5 +1,8 @@
 import http.server
 import socketserver
+import sys
+
+sys.stderr = open('Result.txt', 'w')
 
 PORT = 80
 

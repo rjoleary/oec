@@ -1,0 +1,33 @@
+127.0.0.1 - - [07/Feb/2015 02:05:24] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:24] "GET /css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /libraries/jquery-1.11.2.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /js/canvas-resize.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /js/canvas-update.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /js/get-train-parameters.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /js/main-loop.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /js/signal-block-functions.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /js/train-parameters.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /js/train-safety.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] "GET /Testing.txt HTTP/1.1" 200 -
+127.0.0.1 - - [07/Feb/2015 02:05:25] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [07/Feb/2015 02:05:25] "POST /10001Stop HTTP/1.1" 501 -
+127.0.0.1 - - [07/Feb/2015 02:05:29] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [07/Feb/2015 02:05:29] "POST /10007Slow-Down HTTP/1.1" 501 -
+127.0.0.1 - - [07/Feb/2015 02:05:30] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [07/Feb/2015 02:05:30] "POST /10007Slow-Down HTTP/1.1" 501 -
+127.0.0.1 - - [07/Feb/2015 02:05:31] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [07/Feb/2015 02:05:31] "POST /10007Slow-Down HTTP/1.1" 501 -
+127.0.0.1 - - [07/Feb/2015 02:05:32] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [07/Feb/2015 02:05:32] "POST /10007Slow-Down HTTP/1.1" 501 -
+127.0.0.1 - - [07/Feb/2015 02:05:33] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [07/Feb/2015 02:05:33] "POST /10007Slow-Down HTTP/1.1" 501 -
+127.0.0.1 - - [07/Feb/2015 02:05:34] code 501, message Unsupported method ('POST')
+127.0.0.1 - - [07/Feb/2015 02:05:34] "POST /10007Slow-Down HTTP/1.1" 501 -
+Traceback (most recent call last):
+  File "server.py", line 14, in <module>
+    httpd.serve_forever()
+  File "C:\Python34\lib\socketserver.py", line 236, in serve_forever
+    poll_interval)
+  File "C:\Python34\lib\socketserver.py", line 154, in _eintr_retry
+    return func(*args)
+KeyboardInterrupt
