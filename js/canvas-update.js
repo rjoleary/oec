@@ -1,7 +1,12 @@
 var ctx = $("#myCanvas");
 var c = ctx[0].getContext("2d");
 var wrapper = $("#wrapper");
+var value;
 
+/**
+* Parse the data for individual train
+* and return x, y, width, and height parameters
+*/
 function parseLocToCoor(front, rear, track, height, width) {
 	var x, y, w, h;
 	if (track == "1E") {
@@ -42,40 +47,83 @@ function parseLocToCoor(front, rear, track, height, width) {
  * As input, this takes an array of TrainParameters.
  * When called, this function is expected to update the canvas.
  */
- function updateCanvas(trainParameters) {
- 	var size = trainParameters.length;
-    console.log("Updating the canvas with " + JSON.stringify(trainParameters));
+function updateCanvas(trainParameters) {
+	var size = trainParameters.length;
+	console.log("Updating the canvas with " + JSON.stringify(trainParameters));
 
-    var height = ctx[0].height;
-    var width = ctx[0].width;
-    console.log("Canvas height " + height + " width " + width);
-    c.clearRect(0, 0, width, height);
+	var height = ctx[0].height;
+	var width = ctx[0].width;
+	console.log("Canvas height " + height + " width " + width);
 
-	// 1
+	// Clear
+	c.clearRect(0, 0, width, height);
+
+	// Track 1
 	c.strokeRect(width*0.05, height*0.15, width*0.54, height*0.05);
 	c.strokeRect(width*0.05, height*0.30, width*0.54, height*0.05);
+	c.fillText("--->", width*0.05, height*0.175);
+	c.fillText("<---", width*0.58, height*0.325);
 
-	// 2
+	// Track 2
 	c.strokeRect(width*0.30, height*0.05, width*0.05, height*0.9);
 	c.strokeRect(width*0.45, height*0.05, width*0.05, height*0.9);
+	c.fillText("|", width*0.475, height*0.06);
+	c.fillText("|", width*0.475, height*0.07);
+	c.fillText("V", width*0.4745, height*0.08);
+	c.fillText("^", width*0.3245, height*0.93);
+	c.fillText("|", width*0.325, height*0.94);
+	c.fillText("|", width*0.325, height*0.95);
 
-	// 3
+	// Track 3
 	c.strokeRect(width*0.05, height*0.69, width*0.9, height*0.05);
 	c.strokeRect(width*0.05, height*0.84, width*0.9, height*0.05);
+	c.fillText("--->", width*0.05, height*0.715);
+	c.fillText("<---", width*0.94, height*0.865);
 
 	// c.fillRect(width*0.10, height*0.212, height*0.006, height*0.006);
 
 	// console.log(trainParameters[0]["trainId"]);
 
 	for(i=0; i<size; ++i) {
-		// console.log(trainParameters[i]["trainId"]);
 		var arr = parseLocToCoor(parseInt(trainParameters[i]["front"]), parseInt(trainParameters[i]["rear"]), trainParameters[i]["track"], height, width);
 		c.fillStyle = 'green';
-		// c.fillRect(width*0.10, height*0.15, height*0.01, height*0.05);
 		console.log(arr);
 		c.fillRect(arr[0], arr[1], arr[2], arr[3]);
 
-		// c.fillStyle = 'red';
-		// c.fillText('10010', width*0.09, height*0.17);
+		c.fillStyle = 'black';
+		c.fillText(trainParameters[i]["trainId"], arr[0], arr[1]);
+
+		if (trainParameters[i]["trainId"] == value) {
+			console.log(111);
+			$("#front").text(trainParameters[i]["front"]);
+			$("#rear").text(trainParameters[i]["rear"]);
+			$("#speed").text(trainParameters[i]["speed"]);
+			$("#state").text(trainParameters[i]["status"]);
+		}
 	}
+
+	var zoom = 0;
+	$('#trainidsubmit').on('click', function() {
+		value = $('#t-id').val();
+	});
+
+	for(i=0; i<size; ++i) {
+		
+	}
+
+	$( "#zoom" ).click(function() {
+	 	++zoom;
+	 	if (zoom % 2 != 0)
+	 	{
+	 		// document.body.style.zoom=10.0;this.blur();
+	 		$("canvas").css("transform", "scale(2,2)");
+
+	 	}
+	 	else
+	 	{
+	 		// document.body.style.zoom=1.0;this.blur();
+	 		$("canvas").css("transform", "scale(1,1)");
+	 	}
+	 	console.log("CLICKED - ZOOM " + zoomtype + " ID = " + value);
+	});
 }
