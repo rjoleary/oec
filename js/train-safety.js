@@ -6,7 +6,7 @@ function applySafety(trainParameters) {
 	var cmd = [];
 	for (var i = 0; i < trainParameters.length; i++) {
 		for (var j = i + 1; j < trainParameters.length; j++) {
-			if (i != j){
+			if (i != j && trainParameters[i].track === trainParameters[j].track){
                 var front;
                 var back;
 				if (trainParameters[i].rear > trainParameters[j].front){
