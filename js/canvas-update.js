@@ -6,14 +6,12 @@
     console.log("Updating the canvas with " + JSON.stringify(trainParameters));
 
 
-	var ctx = $("#myCanvas");
-	var c = ctx[0].getContext("2d");
+	var canvas = $("#myCanvas")[0];
+	var c = canvas.getContext("2d");
 	var wrapper = $("#wrapper");
-	var height = $(window).height()*0.95;
-	var width = height*1.25;
-
-	ctx.attr("height", height);
-	ctx.attr("width", width);
+    var height = canvas.height;
+    var width = canvas.width;
+    console.log("Canvas height " + height + " width " + width);
 
 	// 1
 	c.strokeRect(width*0.05, height*0.15, width*0.54, height*0.01);
