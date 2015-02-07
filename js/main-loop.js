@@ -7,7 +7,9 @@ $(function () {
     var time = 0;
     setInterval(function () {
         var trainParameters = getTrainParameters(time);
-        if (trainParameters) {
+        
+        // Only continue if there are new train parameters.
+        if (trainParameters && trainParameters.length > 0) {
             updateCanvas(trainParameters);
             applySafety(trainParameters);
         }
